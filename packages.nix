@@ -12,6 +12,8 @@
       firefox-addons = inputs.firefox-addons.packages."${system}";
       zen-browser = inputs.zen-browser.packages."${system}".default;
       nur = inputs.nur.legacyPackages.${system};
+      elyprismlauncher = inputs.prismlauncher.packages.${system}.default;
+      stremio = inputs.nixohess.packages.${system}.stremio-linux-shell;
     }
     // inputs.scripts.packages."${system}")
 ]

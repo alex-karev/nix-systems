@@ -1,8 +1,6 @@
 {
   pkgs,
   lib,
-  elyprismlauncher,
-  stremio,
   ...
 }: let
   # Steam-run wrapper scipt

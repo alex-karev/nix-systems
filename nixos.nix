@@ -16,25 +16,14 @@ in
     nixpkgs.lib.nixosSystem {
       inherit system;
 
-      # Pass arguments to modules
-      specialArgs = {
-        elyprismlauncher = inputs.prismlauncher.packages.${system}.default;
-        stremio = inputs.nixohess.packages.${system}.stremio-linux-shell;
-      };
-
       # Add modules
       modules = let
         pkgs = import nixpkgs {inherit system inputs;};
       in
         [
-          # Add nixpkgs overlays
-          {
-            nixpkgs.overlays = import ./packages.nix {inherit inputs system;};
-          }
-
           # Common configurations
           (import ./nixos/modules/common.nix {
-            inherit locale timezone hostname username nixpkgs pkgs;
+            inherit locale timezone hostname username nixpkgs pkgs inputs system;
             caps =
               {
                 tailscale = true;

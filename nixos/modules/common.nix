@@ -6,6 +6,8 @@
   username,
   caps,
   nixpkgs,
+  inputs,
+  system,
   ...
 }: {
   # Enable flakes
@@ -109,6 +111,9 @@
     description = username;
     extraGroups = ["networkmanager" "wheel" "video" "render" "seat"];
   };
+
+  # Add nixpkgs overlays
+  nixpkgs.overlays = import ../../packages.nix {inherit inputs system;};
 
   # Install system packages
   environment.systemPackages = [
