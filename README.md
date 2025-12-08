@@ -1,2 +1,3 @@
-# nix-systems
-NixOS and Home Manager dotfiles
+# NixOS and Home Manager dotfiles
+
+

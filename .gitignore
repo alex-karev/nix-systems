@@ -4,3 +4,9 @@ result-*
 
 # Ignore automatically generated direnv output
 .direnv
+
+# Ignore assets
+assets/webapps/*
+assets/wallpapers/*
+!assets/wallpapers/default.png
+!assets/webapps/.gitkeep
