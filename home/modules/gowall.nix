@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  ...
 }: let
   # Write gowall theme
   gowallTheme = pkgs.writeText "stylix-gowall-theme.json" (builtins.toJSON {
@@ -25,40 +26,23 @@
     ];
   });
 in {
-  # Generate wallpaper
-  mkWallpaper = src: let
-    wallpaperPath =
-      pkgs.runCommand "gowall-wallpaper" {
-        inherit src;
-        buildInputs = [pkgs.gowall];
-        HOME = "$TMPDIR";
-      } ''
-        mkdir -p $out
-        gowall convert $src --output $out/wallpaper.png -t ${gowallTheme}
-      '';
-  in "${wallpaperPath}/wallpaper.png";
-  # Generate wallpaper pack
-  mkWallpaperPack = src:
-    pkgs.runCommand "gowall-wallpaper" {
-      inherit src;
-      buildInputs = [pkgs.gowall];
-      HOME = "$TMPDIR";
-    } ''
-      mkdir -p $out
-      gowall convert --dir $src --output $out -t ${gowallTheme}
-    '';
-  # Apply colors to icon theme
-  # TODO: This will not work
-  # See: https://achno.github.io/gowall-docs/conversions/convertIconTheme/
-  mkIcons = iconPackage:
-    pkgs.runCommand "gowall-icons" {
-      buildInputs = [
-        iconPackage
-        pkgs.gowall
-      ];
-      HOME = "$TMPDIR";
-    } ''
-      mkdir -p $out/share/icons
-      gowall convert --dir ${iconPackage}/share/icons --output $out/share/icons -t ${gowallTheme}
-    '';
+  systemd.user.services.gowall-generate = {
+    Unit = {
+      Description = "Generate wallpapers using Gowall";
+    };
+
+    Service = {
+      Type = "oneshot";
+      WorkingDirectory = "%h/Pictures/Wallpapers";
+      ExecStart = "${pkgs.gowall}/bin/gowall convert --dir %h/Pictures/Wallpapers --output %h/Pictures/gowall -t ${gowallTheme}";
+    };
+
+    Install = {
+      WantedBy = ["default.target"];
+    };
+  };
+
+  home.file."${config.home.homeDirectory}/Pictures/Wallpapers/default.png" = {
+    source = ../../assets/wallpaper.png;
+  };
 }

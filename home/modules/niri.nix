@@ -5,8 +5,6 @@
   ...
 }: let
   # Define packages
-  gowall = import ./gowall.nix {inherit pkgs config;};
-  wallpaperPack = gowall.mkWallpaperPack ../../assets/wallpapers;
   xwayland-satellite = "${pkgs.xwayland-satellite}/bin/xwayland-satellite";
   locker = "${pkgs.swaylock-effects}/bin/swaylock";
   notify-volume = "${pkgs.notify-volume}/bin/notify-volume";
@@ -21,7 +19,7 @@
   fuzzel = "${pkgs.fuzzel}/bin/fuzzel";
   fuzzel-calc = "${pkgs.fuzzel-calc}/bin/fuzzel-calc";
   terminal = "${pkgs.kitty}/bin/kitty";
-  bg = "${pkgs.waypaper}/bin/waypaper --folder ${wallpaperPack} --backend swww";
+  bg = "${pkgs.waypaper}/bin/waypaper --folder ~/Pictures/gowall --backend swww";
   waybar = "${pkgs.waybar}/bin/waybar";
   networkmanager = "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
 in {

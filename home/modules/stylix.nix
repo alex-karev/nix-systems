@@ -22,8 +22,6 @@
     override = {};
     # https://github.com/PapirusDevelopmentTeam/papirus-folders
     iconColor = "nordic";
-    # Gowall module for color-tinted wallpapers and icons
-    gowall = import ./gowall.nix {inherit pkgs config;};
   in {
     enable = true;
     base16Scheme = "${schemeSet}/share/themes/${theme}.yaml";
@@ -38,7 +36,7 @@
     inherit override;
 
     # Wallpaper
-    image = lib.mkIf hasDisplay (gowall.mkWallpaper ../../assets/wallpapers/default.png);
+    image = lib.mkIf hasDisplay ../../assets/wallpaper.png;
 
     # Fonts
     fonts = let

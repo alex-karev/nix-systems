@@ -84,6 +84,7 @@
           hostname = "zenbook";
           modules = [
             ./home/modules/stylix.nix
+            ./home/modules/gowall.nix
             ./home/modules/shell.nix
             ./home/modules/fcitx.nix
             ./home/modules/wm.nix

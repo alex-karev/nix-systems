@@ -26,7 +26,7 @@ in {
   };
 
   # Link icons
-  home.file."${config.home.homeDirectory}/.local/share/icons/webapps" = {
-    source = ../../assets/webapps;
-  };
+  # home.file."${config.home.homeDirectory}/.local/share/icons/webapps" = {
+  #   source = ../../assets/webapps;
+  # };
 }
