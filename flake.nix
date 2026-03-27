@@ -1,32 +1,25 @@
 {
-  description = "NixOS and Home-manager Flake by alex-karev";
-
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
+    wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
+
+    nix-colors.url = "github:misterio77/nix-colors";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    prismlauncher = {
-      url = "github:ElyPrismLauncher/ElyPrismLauncher";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixohess = {
-      url = "gitlab:fazzi/nixohess";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    niri = {
-      url = "github:sodiboo/niri-flake";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     stylix = {
-      url = "github:nix-community/stylix/release-25.11";
+      url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak/?ref=latest";
     };
 
     zen-browser = {
@@ -34,77 +27,34 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixvim = {
-      url = "path:./nixvim";
+      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    scripts = {
-      url = "path:./scripts";
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    bubblewrap = {
-      url = "path:./bubblewrap";
+    hayase = {
+      url = "github:DarkGuibrine/hayase-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+
+    winapps = {
+      url = "github:winapps-org/winapps";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    wpsoffice-flake = {
+      url = "github:alex-karev/wpsoffice-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    ...
-  } @ inputs: let
-    # Helper functions
-    mkSystem = import ./nixos.nix {inherit inputs;};
-    mkHome = import ./home.nix {inherit inputs;};
-  in {
-    # NixOS configurations
-    nixosConfigurations = {
-      # Zenbook laptop
-      zenbook = mkSystem {
-        system = "x86_64-linux";
-        hostname = "zenbook";
-        username = "alex";
-        caps.bluetooth = true;
-        caps.coredump = true;
-        modules = [
-          ./nixos/modules/wayland.nix
-          ./nixos/modules/gaming.nix
-          ./nixos/modules/obs.nix
-        ];
-        home = mkHome {
-          system = "x86_64-linux";
-          hostname = "zenbook";
-          modules = [
-            ./home/modules/stylix.nix
-            ./home/modules/gowall.nix
-            ./home/modules/shell.nix
-            ./home/modules/fcitx.nix
-            ./home/modules/wm.nix
-            ./home/modules/hide.nix
-            ./home/modules/webapps.nix
-            ./home/modules/niri.nix
-            ./home/modules/waybar.nix
-            ./home/modules/apps.nix
-            ./home/modules/browser.nix
-          ];
-        };
-      };
-    };
-
-    # Home manager configurations (standalone)
-    homeConfigurations = {
-      # newDevice = home-manager.lib.homeManagerConfiguration mkSystem {...}
-    };
-
-    # Devshell (for direnv)
-    devShells = import ./shell.nix {inherit nixpkgs;};
-  };
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;}
+    (inputs.import-tree.filterNot (inputs.nixpkgs.lib.hasInfix "nixvim/") ./modules);
 }
