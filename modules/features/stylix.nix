@@ -68,7 +68,7 @@
       targets = {
         qt.enable = true;
         gtk.enable = true;
-
+        fuzzel.enable = true;
         waybar.font = "sansSerif";
         zen-browser = {
           enable = true;

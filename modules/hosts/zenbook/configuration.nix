@@ -51,6 +51,7 @@
       users.${username} = {
         imports = [
           self.homeModules.stylix
+          self.homeModules.git
           self.homeModules.gowall
           self.homeModules.hide
           self.homeModules.browser

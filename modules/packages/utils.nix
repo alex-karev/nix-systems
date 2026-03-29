@@ -10,21 +10,6 @@
     lib,
     ...
   }: {
-    # Git
-    packages.git = inputs.wrapper-modules.wrappers.git.wrap {
-      inherit pkgs;
-      settings = {
-        core.excludesfile = pkgs.writeText "gitignore" (builtins.concatStringsSep "\n" [".envrc"]);
-        filter.lfs = {
-          clean = "git-lfs clean -- %f";
-          process = "git-lfs filter-process";
-          required = true;
-          smudge = "git-lfs smudge -- %f";
-        };
-        user = gitUser;
-      };
-    };
-
     # Fzf
     packages.fzf = inputs.wrapper-modules.lib.wrapPackage ({...}: {
       inherit pkgs;

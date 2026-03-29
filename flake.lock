@@ -459,6 +459,22 @@
         "type": "github"
       }
     },
+    "noctalia-plugins": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1774711746,
+        "narHash": "sha256-gc7ELl2IpD3GYpTraK2vT/0HqViR1ebMlxUDYOXG1nk=",
+        "owner": "noctalia-dev",
+        "repo": "noctalia-plugins",
+        "rev": "11260389f4517b48c6cc1912c5c2a1e658673a6c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctalia-dev",
+        "repo": "noctalia-plugins",
+        "type": "github"
+      }
+    },
     "nur": {
       "inputs": {
         "flake-parts": [
@@ -495,6 +511,7 @@
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
+        "noctalia-plugins": "noctalia-plugins",
         "stylix": "stylix",
         "winapps": "winapps",
         "wpsoffice-flake": "wpsoffice-flake",

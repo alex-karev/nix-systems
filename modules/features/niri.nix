@@ -398,6 +398,11 @@
       package = self.packages.${pkgs.stdenv.hostPlatform.system}.niri;
     };
 
+    # Add noctalia to path
+    environment.systemPackages = [
+      self.packages.${pkgs.stdenv.hostPlatform.system}.noctalia
+    ];
+
     # Activate portals
     xdg.portal = {
       enable = true;

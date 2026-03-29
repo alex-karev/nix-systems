@@ -16,10 +16,6 @@
     _module.args = {
       systemFlakePath = "~/System";
       username = "alex";
-      gitUser = {
-        email = "(none)";
-        name = "Alex Karev";
-      };
     };
 
     # Allow unfree packages

@@ -42,7 +42,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
     winapps = {
       url = "github:winapps-org/winapps";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,6 +50,11 @@
     wpsoffice-flake = {
       url = "github:alex-karev/wpsoffice-flake";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    noctalia-plugins = {
+      url = "github:noctalia-dev/noctalia-plugins";
+      flake = false;
     };
   };
 

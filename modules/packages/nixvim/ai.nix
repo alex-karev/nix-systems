@@ -1,10 +1,10 @@
 # Ai companion
 let
-  #provider = "gemini";
   provider = "custom";
-  baseUrl = "vim.env.OPENAI_BASE_URL or \"https://api.openai.com/v1\"";
-  apiKey = "vim.env.OPENAI_API_KEY or \"\"";
-  model = "vim.env.OPENAI_MODEL or \"gpt-4o\"";
+  baseUrl = "vim.env.OPENAI_BASE_URL or \"http://localhost:3042/openai\"";
+  apiKey = "vim.env.OPENAI_API_KEY or \"nokey\"";
+  model = "vim.env.OPENAI_MODEL or \"tensorzero::function_name::codecompanion\"";
+  cmp_model = "vim.env.OPENAI_MODEL or \"tensorzero::function_name::cmp\"";
   name = "Kitsu";
   intro = "Hi, what's up? ✌️ Press ? to see options";
   systemPrompt = ''
@@ -43,7 +43,7 @@ let
     Additional context:
     All non-code text responses must be written in the %s language.
     The current date is %s.
-    The user is working on a %s machine. Please respond with system specific commands if applicable.
+    The user is working in %s on a %s machine. Please respond with system specific commands if applicable.
   '';
 in {
   plugins = {
@@ -119,8 +119,8 @@ in {
         };
         provider_options.openai_compatible = {
           api_key.__raw = "function () return ${apiKey} end";
-          end_point.__raw = "${baseUrl} .. \"/v1/chat/completions\"";
-          model.__raw = model;
+          end_point.__raw = "(${baseUrl}) .. \"/v1/chat/completions\"";
+          model.__raw = cmp_model;
           name = "custom";
           stream = true;
         };

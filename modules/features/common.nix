@@ -120,21 +120,16 @@
     # Install essential system packages
     environment.systemPackages = kits.system;
 
-    # Enable git
-    programs.git = {
-      package = self.packages.${system}.git;
-      enable = true;
-      lfs.enable = true;
-    };
-
     # Enable ssh agent
-    programs.ssh = {
-      # startAgent = true;
-      extraConfig = ''
-        Host *
-            AddKeysToAgent yes
-      '';
-    };
+    # TODO: Fix. For some reason current config
+    # produces several ssh-add processes which melt my cpu
+    # programs.ssh = {
+    #   # startAgent = true;
+    #   extraConfig = ''
+    #     Host *
+    #         AddKeysToAgent yes
+    #   '';
+    # };
 
     # Setup user
     users.users.${username} = {
