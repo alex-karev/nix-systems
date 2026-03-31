@@ -126,16 +126,16 @@
         };
 
         # Workspaces
-        workspaces = {
-          "1".open-on-output = "eDP-1";
-          "2".open-on-output = "eDP-1";
-          "3".open-on-output = "eDP-1";
-          "4".open-on-output = "eDP-1";
-          "5".open-on-output = "eDP-1";
-          "6".open-on-output = "eDP-1";
-          "7".open-on-output = "eDP-1";
-          "8".open-on-output = "eDP-1";
-        };
+        # workspaces = {
+        #   "1".open-on-output = "eDP-1";
+        #   "2".open-on-output = "eDP-1";
+        #   "3".open-on-output = "eDP-1";
+        #   "4".open-on-output = "eDP-1";
+        #   "5".open-on-output = "eDP-1";
+        #   "6".open-on-output = "eDP-1";
+        #   "7".open-on-output = "eDP-1";
+        #   "8".open-on-output = "eDP-1";
+        # };
 
         # Keybindings
         binds = {
@@ -280,107 +280,107 @@
             max-height = 800;
           }
 
-          # Workspace 1: code
-          (mkWorkspaceRule "1" (matchIds [
-            "^(Code|code-oss)$"
-            "(.*)(quillbot.com)(.*)"
-            "(.*)(overleaf.com)(.*)"
-            "(.*)(n8n)(.*)"
-            "libreoffice-calc"
-            "com.github.xournalpp.xournalpp"
-          ]))
-
-          # Workspace 2: browse
-          (mkWorkspaceRule "2" (matchIds [
-            "^(firefox|chinesenad|Chromium|Chromium-browser)$"
-          ]))
-
-          # Workspace 3: edit
-          (mkWorkspaceRule "3" (matchIds [
-            "(gimp-)(.*)"
-            "(.*)(figma.com)(.*)"
-            "(.*)(www.photopea.com)(.*)"
-            "Darktable"
-            "krita"
-            "photopea"
-            "Aseprite"
-            "org.inkscape.Inkscape"
-            "kdenlive"
-            "Cinelerra"
-            "Blender"
-            "Audacity"
-            "draw.io"
-            "Blockbench"
-            "libreoffice-impress"
-          ]))
-
-          # Workspace 4: game
-          (mkWorkspaceRule "4" (matchIds [
-            "Godot"
-            "UnityHub"
-            "Lutris"
-            "com.github.tkashkin.gamehub"
-            "steam"
-            "itch"
-            "org.polymc.PolyMC"
-            "page.kramo.Cartridges"
-          ]))
-
-          # Workspace 5: media
-          (mkWorkspaceRule "5" (matchIds [
-            "mpv"
-            "Stremio"
-            "FreeTube"
-            "netease-cloud-music"
-            "YouTube Music"
-            "(.*)(music.youtube.com)(.*)"
-            "fluent-reader"
-          ]))
-
-          # Workspace 6: social
-          (mkWorkspaceRule "6" (matchIds [
-            "discord"
-            "electronic-wechat"
-            "wechat"
-            "org.telegram.desktop"
-            "(.*)(chatgpt.com)(.*)"
-            "(.*)(perplexity.ai)(.*)"
-            "(.*)(fgpt.duckdns.org)(.*)"
-            "(.*)(chat.deepseek.com)(.*)"
-            "(.*)(whatsapp.com)(.*)"
-            "(.*)(web.telegram.org)(.*)"
-            "xyz.chatboxapp.app"
-          ]))
-
-          # Workspace 7: read
-          (mkWorkspaceRule "7" (matchIds [
-            "calibre"
-            "obsidian"
-            "Zotero"
-            "Wps"
-            "Et"
-            "Wpp"
-            "Evince"
-            "Komikku"
-            "libreoffice-writer"
-            "org.kde.okular"
-          ]))
-
-          # Workspace 8: tweak
-          (mkWorkspaceRule "8" (matchIds [
-            "uget-gtk"
-            "com.obsproject.Studio"
-            "webapp-manager.py"
-            "org.qbittorrent.qBittorrent"
-          ]))
-
-          # Workspace 9: server
-          (mkWorkspaceRule "9" (matchIds [
-            "Virt-manager"
-            "Vmplayer"
-            "scrcpy"
-            "org.remmina.Remmina"
-          ]))
+          # # Workspace 1: code
+          # (mkWorkspaceRule "1" (matchIds [
+          #   "^(Code|code-oss)$"
+          #   "(.*)(quillbot.com)(.*)"
+          #   "(.*)(overleaf.com)(.*)"
+          #   "(.*)(n8n)(.*)"
+          #   "libreoffice-calc"
+          #   "com.github.xournalpp.xournalpp"
+          # ]))
+          #
+          # # Workspace 2: browse
+          # (mkWorkspaceRule "2" (matchIds [
+          #   "^(firefox|chinesenad|Chromium|Chromium-browser)$"
+          # ]))
+          #
+          # # Workspace 3: edit
+          # (mkWorkspaceRule "3" (matchIds [
+          #   "(gimp-)(.*)"
+          #   "(.*)(figma.com)(.*)"
+          #   "(.*)(www.photopea.com)(.*)"
+          #   "Darktable"
+          #   "krita"
+          #   "photopea"
+          #   "Aseprite"
+          #   "org.inkscape.Inkscape"
+          #   "kdenlive"
+          #   "Cinelerra"
+          #   "Blender"
+          #   "Audacity"
+          #   "draw.io"
+          #   "Blockbench"
+          #   "libreoffice-impress"
+          # ]))
+          #
+          # # Workspace 4: game
+          # (mkWorkspaceRule "4" (matchIds [
+          #   "Godot"
+          #   "UnityHub"
+          #   "Lutris"
+          #   "com.github.tkashkin.gamehub"
+          #   "steam"
+          #   "itch"
+          #   "org.polymc.PolyMC"
+          #   "page.kramo.Cartridges"
+          # ]))
+          #
+          # # Workspace 5: media
+          # (mkWorkspaceRule "5" (matchIds [
+          #   "mpv"
+          #   "Stremio"
+          #   "FreeTube"
+          #   "netease-cloud-music"
+          #   "YouTube Music"
+          #   "(.*)(music.youtube.com)(.*)"
+          #   "fluent-reader"
+          # ]))
+          #
+          # # Workspace 6: social
+          # (mkWorkspaceRule "6" (matchIds [
+          #   "discord"
+          #   "electronic-wechat"
+          #   "wechat"
+          #   "org.telegram.desktop"
+          #   "(.*)(chatgpt.com)(.*)"
+          #   "(.*)(perplexity.ai)(.*)"
+          #   "(.*)(fgpt.duckdns.org)(.*)"
+          #   "(.*)(chat.deepseek.com)(.*)"
+          #   "(.*)(whatsapp.com)(.*)"
+          #   "(.*)(web.telegram.org)(.*)"
+          #   "xyz.chatboxapp.app"
+          # ]))
+          #
+          # # Workspace 7: read
+          # (mkWorkspaceRule "7" (matchIds [
+          #   "calibre"
+          #   "obsidian"
+          #   "Zotero"
+          #   "Wps"
+          #   "Et"
+          #   "Wpp"
+          #   "Evince"
+          #   "Komikku"
+          #   "libreoffice-writer"
+          #   "org.kde.okular"
+          # ]))
+          #
+          # # Workspace 8: tweak
+          # (mkWorkspaceRule "8" (matchIds [
+          #   "uget-gtk"
+          #   "com.obsproject.Studio"
+          #   "webapp-manager.py"
+          #   "org.qbittorrent.qBittorrent"
+          # ]))
+          #
+          # # Workspace 9: server
+          # (mkWorkspaceRule "9" (matchIds [
+          #   "Virt-manager"
+          #   "Vmplayer"
+          #   "scrcpy"
+          #   "org.remmina.Remmina"
+          # ]))
         ];
       };
     };
